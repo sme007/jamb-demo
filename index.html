@@ -2,137 +2,625 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Jamb Entries Demo</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="css/mdb.min.css" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
-  <link href="css/style.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Jamb | Student entries</title>
+  <link rel="stylesheet" href="public/css/sidebar.css" type="text/css" />
+  <script src="public/js/font-awesome.js"></script>
 </head>
 
 <body>
+  <!-- Vertical sidebar -->
+  <div class="sidebar_menu" id="mySidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-  <!-- Start your project here-->
+    <div class="nav_image">
+      <img src="public/img/Official_JAMB_logo.png" id="passport" class="avater" /><br />
+    </div>
 
-  <body>
-
-    <header>
-      <!-- Full Page Intro -->
-      <div class="view">
-
-        <!-- Mask & flexbox options-->
-        <div class="mask rgba-gradient align-items-center">
-          <!-- Content -->
-
-          <div class="container" style="padding-top:50px;">
-            <!--Grid row-->
-            <div class="row mt-5">
-              <!--Grid column-->
-              <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-center">
-                <img src="img/Official_JAMB_logo.png" class=" mx-auto d-block">
-                <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Sign In </h1>
-                <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
-                <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit. Rem repellendus quasi fuga nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non
-                  animi ea dolor molestiae, quisquam iste, maiores. Nulla.</h6>
-                <a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s">Learn more</a>
-              </div>
-              <!--Grid column-->
-              <!--Grid column-->
-              <div class="col-md-6 col-xl-5 mb-4">
-                <!--Form-->
-                <div class="card wow fadeInRight" data-wow-delay="0.3s">
-                  <div class="card-body">
-                    <!--Header-->
-                    <div class="text-center">
-                      <h3 class="white-text">
-                        <i class="fas fa-user white-text"></i> Login:</h3>
-                      <hr class="hr-light">
-                    </div>
-                    <!--Body-->
-                    <div class="md-form">
-                      <i class="fas fa-user prefix white-text active"></i>
-                      <input type="text" id="form3" class="white-text form-control">
-                      <label for="form3" class="active">Your name</label>
-                    </div>
-                    <div class="md-form">
-                      <i class="fas fa-envelope prefix white-text active"></i>
-                      <input type="email" id="form2" class="white-text form-control">
-                      <label for="form2" class="active">Your email</label>
-                    </div>
-                    <div class="md-form">
-                      <i class="fas fa-lock prefix white-text active"></i>
-                      <input type="password" id="form4" class="white-text form-control">
-                      <label for="form4">Your password</label>
-                    </div>
-                    <div class="text-center mt-4">
-                      <button class="btn btn-green">Sign in</button>
-                      <hr class="hr-light mb-3 mt-4">
-                      <div class="inline-ul text-center">
-                        <a class="p-2 m-2 tw-ic">
-                          <i class="fab fa-twitter white-text"></i>
-                        </a>
-                        <a class="p-2 m-2 li-ic">
-                          <i class="fab fa-linkedin-in white-text"> </i>
-                        </a>
-                        <a class="p-2 m-2 ins-ic">
-                          <i class="fas fa-instagram white-text"> </i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--/.Form-->
-              </div>
-              <!--Grid column-->
-            </div>
-            <!--Grid row-->
-          </div>
-          <!-- Content -->
-        </div>
-        <!-- Mask & flexbox options-->
+    <ul class="navigation_section">
+      <a href="compose.html">
+        <li class="navigation_item"><i class="fa fa-pen-square navigation_item-i"></i>Add Entry</li>
+      </a>
+      <a href="dashboard.html">
+        <li class="navigation_item"><i class="fa fa-heart navigation_item-i"></i>Entries</li>
+      </a>
+      <a href="">
+        <li class="navigation_item"><i class="fa fa-print navigation_item-i"></i>Print</li>
+      </a>
+      <a href="">
+        <li class="navigation_item"><i class="fa fa-edit navigation_item-i"></i>Export to Excel</li>
+      </a>
+      <a href="">
+        <li class="navigation_item"><i class="fa fa-file navigation_item-i"></i>Download as pdf</li>
+      </a>
+      <a href="">
+        <li class="navigation_item"><i class="fa fa-user navigation_item-i"></i>Account</li>
+      </a>
+      <li>
+        <button class="icon-btn" id="logout">
+          <h1 class="boxed_item boxed_item_smaller signup"><i class="fa fa-user"></i> LOGOUT</h1>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <main>
+    <section class="container" id="container">
+      <div class="mobile-nav"><span class="mobile_menu_icon" onclick="openNav()">&#9776;</span></div>
+      <nav class="top-menu" id="total-entries">Total entries: 0</nav>
+      <h3 id="entry-table-heading">Student's Record</h3>
+      <div class="" style="display:inline-block;">
+        <select style="width:200px; margin-left:30px;" id="searchOption">
+          <option selected disabled>Search by</option>
+          <option>Reg-no</option>
+          <option>Year</option>
+          <option>University</option>
+        </select>
+        <input type="text" id="mySearch" onkeyup="mySearch()" placeholder="Search for records by registration no, year or university"
+          style="width:700px;">
       </div>
-      <!-- Full Page Intro -->
-    </header>
-    <!-- Main navigation -->
-    <!--Main Layout-->
-    <main>
-      <div class="container">
-        <!--Grid row-->
-        <div class="row py-5">
-          <!--Grid column-->
-          <div class="col-md-12 text-center">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
+      <div class="tbl-header">
+        <table>
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>Reg-no</th>
+              <th>Fullname</th>
+              <th>Gender</th>
+              <th>Course</th>
+              <th>Year</th>
+              <th>University</th>
+              <th>Matric-No</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+        </table>
       </div>
-    </main>
-    <!--Main Layout-->
 
-  </body>
-  <!-- /Start your project here-->
-
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.js"></script>
-  <script type="text/javascript" src="js/jamb.js"></script>
+      <div class="tbl-content">
+        <table>
+          <tbody id="tbody">
+            <tr>
+              <td>1</td>
+              <td>723675IH</td>
+              <td>Adedoyin Akinwale Adegboyega</td>
+              <td>M</td>
+              <td>Accounting</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><a href="detail.html"><button class="icon-btn"><i class="fa fa-eye"></i></a></button></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>72526FF</td>
+              <td>Adepoju Olatunde Ayodele</td>
+              <td></td>
+              <td>Accounting</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><a href="detail.html"><button class="icon-btn"><i class="fa fa-eye"></i></a></button></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>720751FJ</td>
+              <td>Ajani Okutayo Moromkeji</td>
+              <td></td>
+              <td>Accounting</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>819045FJ</td>
+              <td>Ausi Tunji Peter</td>
+              <td>M</td>
+              <td>Accounting</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>840725EC</td>
+              <td>Basanya Shakirat Anike</td>
+              <td>F</td>
+              <td>Accounting</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>75535EE</td>
+              <td>Emokpaire Anthony Raphael</td>
+              <td>M</td>
+              <td>Accounting</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>813514FB</td>
+              <td>Oyelani Feyisayo E.</td>
+              <td>F</td>
+              <td>Accounting</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>690488IA</td>
+              <td>Ajibona Olushola Thomas</td>
+              <td>M</td>
+              <td>Finance</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>816788IB</td>
+              <td>Akosile Kolawole Olapade</td>
+              <td>M</td>
+              <td>Business Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>769732GI</td>
+              <td>Awe Olaniyan Joseph</td>
+              <td></td>
+              <td>Business Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>828168EH</td>
+              <td>Bello Fatai</td>
+              <td>M</td>
+              <td>Business Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>776260GH</td>
+              <td>Chukwu Paulinus Ibe</td>
+              <td>M</td>
+              <td>Business Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>784328FF</td>
+              <td>Falore Olufemi Olawale</td>
+              <td>M</td>
+              <td>Business Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>826369JG</td>
+              <td>Folorunsho Kehinde Adewale</td>
+              <td>M</td>
+              <td>Business Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>819618II</td>
+              <td>Ogunsakin Olugbenga</td>
+              <td>M</td>
+              <td>Business Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td>850658DG</td>
+              <td>Oloruntaba Isaac O.</td>
+              <td>M</td>
+              <td>Business Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td>790412HF</td>
+              <td>Yussuf Rasheed Deji</td>
+              <td>M</td>
+              <td>Business Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>18</td>
+              <td>734247CE</td>
+              <td>Anigboro Philips Oghene</td>
+              <td>M</td>
+              <td>Public Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>19</td>
+              <td>731980GE</td>
+              <td>Ayeni Adegboyega Oluwole</td>
+              <td>M</td>
+              <td>Public Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>781156AB</td>
+              <td>Fashona Adewale Ariyo</td>
+              <td></td>
+              <td>Public Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>21</td>
+              <td>668163HE</td>
+              <td>Garba Sadi Mchammed</td>
+              <td>M</td>
+              <td>Public Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>22</td>
+              <td>805760AA</td>
+              <td>Kupolokun Bankole Kola</td>
+              <td>M</td>
+              <td>Public Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>23</td>
+              <td>789242CG</td>
+              <td>Ogundipe Olusegun Joseph</td>
+              <td>M</td>
+              <td>Public Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>24</td>
+              <td>686962GI</td>
+              <td>Oladipo Kehinde Alabi</td>
+              <td></td>
+              <td>Public Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>25</td>
+              <td>803624JA</td>
+              <td>Oyewole Olatunji Olawale</td>
+              <td>M</td>
+              <td>Public Admin</td>
+              <td>1986</td>
+              <td>University of Ilorin</td>
+              <td></td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>26</td>
+              <td></td>
+              <td>Akerenale Abayomi</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20717</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>27</td>
+              <td></td>
+              <td>Ipinnisho Babatunde Olufemi</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20720</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>28</td>
+              <td></td>
+              <td>Olayomi Ayanniyi Apollonius</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20738</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>29</td>
+              <td></td>
+              <td>Aduba Ikechukwu</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20742</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>30</td>
+              <td></td>
+              <td>Kajero Claudius Popoola Bolaji</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20763</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>31</td>
+              <td></td>
+              <td>Adeyemi Abraham Olisola</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20770</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>32</td>
+              <td></td>
+              <td>Adeyemoh Adekunle James</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20774</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>33</td>
+              <td></td>
+              <td>Okuwa Edith Ofunne</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20777</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>34</td>
+              <td></td>
+              <td>Nwafor Eunice Chinwe</td>
+              <td>F</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20778</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>35</td>
+              <td></td>
+              <td>Ore Ogungbemi Jacob</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20786</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>36</td>
+              <td></td>
+              <td>Tapre Robeson Numbe</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20799</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>37</td>
+              <td></td>
+              <td>Okoiruele Ikhuoris Edwin</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20803</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>38</td>
+              <td></td>
+              <td>Fakolade Babajide Adekunle</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20804</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>39</td>
+              <td></td>
+              <td>Kehinde Adewale Ademola</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20807</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>40</td>
+              <td></td>
+              <td>Belo Michael Adebayo</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20819</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>41</td>
+              <td></td>
+              <td>Adeyoju Christianah Adeola</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20836</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>42</td>
+              <td></td>
+              <td>Ike Francis Emeka</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20836</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>43</td>
+              <td></td>
+              <td>Okoro Uba Ashimole Cyprian</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20837</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>44</td>
+              <td></td>
+              <td>Ayoola Moses Omogeabinde</td>
+              <td></td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20845</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>45</td>
+              <td></td>
+              <td>Ogundele Samuel Oluwole</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20873</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>46</td>
+              <td></td>
+              <td>Ajibola Afolabi Adegbenga</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20883</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>47</td>
+              <td></td>
+              <td>Ahodu Jacob Ade</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20884</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>48</td>
+              <td></td>
+              <td>Fakorede James Oluwale</td>
+              <td>M</td>
+              <td>Arts</td>
+              <td>1977</td>
+              <td>University of Ibadan</td>
+              <td>20888</td>
+              <td><button class="icon-btn"><i class="fa fa-eye"></i></button></td>
+            </tr>
+            
+            
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>
+
+<!-- Jquery library -->
+<script src="public/jquery/jquery-2.1.1.min.js"></script>
+<script src="public/js/myDiary.js"></script>
+<script src="public/js/search.js"></script>
